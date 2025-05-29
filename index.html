@@ -1,39 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RedZone Game Hub</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tkay Basic Maths Website</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <h1>Tkay Basic Maths Website</h1>
+  <p>Enter two numbers and choose an operation:</p>
+  <input type="number" id="num1" placeholder="First number" />
+  <input type="number" id="num2" placeholder="Second number" />
+  <br />
+  <button onclick="calculate('+')">Add</button>
+  <button onclick="calculate('-')">Subtract</button>
+  <button onclick="calculate('*')">Multiply</button>
+  <button onclick="calculate('/')">Divide</button>  <div class="result" id="result"></div>  <script>
+    function calculate(operator) {
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+      let result;
 
-  <header>
-    <h1>RedZone Game Hub</h1>
-  </header>
+      if (isNaN(num1) || isNaN(num2)) {
+        result = 'Please enter valid numbers.';
+      } else {
+        switch (operator) {
+          case '+':
+            result = num1 + num2;
+            break;
+          case '-':
+            result = num1 - num2;
+            break;
+          case '*':
+            result = num1 * num2;
+            break;
+          case '/':
+            result = num2 !== 0 ? num1 / num2 : 'Cannot divide by zero';
+            break;
+        }
+      }
 
-  <section class="games-section">
-    <div class="game-card">
-      <h3>Word Sprint</h3>
-      <p>Boost your vocabulary with fast-paced word challenges.</p>
-    </div>
-    <div class="game-card">
-      <h3>Math Rush</h3>
-      <p>Sharpen your math skills with rapid-fire questions.</p>
-    </div>
-    <div class="game-card">
-      <h3>GeoDrop</h3>
-      <p>Match flags to countries before time runs out!</p>
-    </div>
-    <div class="game-card">
-      <h3>Logic Maze</h3>
-      <p>Escape the maze by solving logic puzzles step-by-step.</p>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 RedZone Games | All rights reserved.
-  </footer>
-
-</body>
+      document.getElementById('result').textContent = 'Result: ' + result;
+    }
+  </script></body>
 </html>
